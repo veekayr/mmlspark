@@ -315,7 +315,8 @@ trait VowpalWabbitBase extends Wrappable
                                          vwArgs: StringBuilder,
                                          numWorkers: Int): Array[TrainingResult] = {
     // multiple partitions -> setup distributed coordination
-    val spanningTree = new ClusterSpanningTree(0, getArgs.contains("--quiet"))
+    val _port = 39011
+    val spanningTree = new ClusterSpanningTree(_port, getArgs.contains("--quiet"))
 
     try {
       spanningTree.start()
